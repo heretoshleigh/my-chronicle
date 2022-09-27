@@ -1,0 +1,130 @@
+<h3>Create a new chronicle</h3>
+
+<div class="row section">
+    <form action="/stories" method="POST" class="col s12">
+
+        <div class="row">
+            <div class="input-field">
+                <select name="chronicleType" id="chronicleType" class="select" onchange="displayForm(this.value)">
+                    <option value=""></option>
+                    <option value="freestyle">Freestyle</option>
+                    <option value="chronological">Chronologically</option>
+                    <option value="categorical">Topic by topic</option>
+                </select>
+                <label for="chronicleType">How would you like to tell this story?</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select name="status" id="status" class="select">
+                    <option value=""></option>
+                    <option value="private">Keep it private</option>
+                    <option value="public">Make it public</option>
+                </select>
+                <label for="status">Do you want to share it?</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field">
+                <input type="text" name="title" id="title" >
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        <div id="freestyle" class="row section" hidden>
+            <div class="input-field">
+                <h6>Tell your story freestyle, organizing it in any way that makes sense to you:</h6>
+                <textarea name="freestyleText"></textarea>
+            </div>
+        </div>
+
+        <div id="chronological" class="row section" hidden>
+            <h6>Tell your story chronologically, organizing it into any periods of time that feel meaningful to you:</h6>
+            <div class="input-field">
+                <div class="row">
+                    <div class="col l6">
+                        <input type="text" name="startDate" id="startDate0" class="datepicker">
+                        <label for="#startDate0">Start Date</label>
+                    </div>
+                    <div class="col l6">
+                        <input type="text" name="endDate" id="endDate0" class="datepicker">
+                        <label for="#endDate0">End Date</label>
+                    </div>
+                </div>
+                <textarea name="chronologicalText" id="chronologicalText0"></textarea>
+            </div>
+            <span id="addPeriod" class="btn blue">Add another time period</span>
+        </div>
+
+        <div class="row section" id="categorical" hidden>
+            <h6>Tell your story topic by topic, organizing it into categories related to your illness:</h6>
+            <div class="section">
+                <label class="radio">
+                    <input type="radio" name="topic0" value="Context" class="with-gap"/>
+                    <span>Context</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="topic0" value="Symptoms" class="with-gap"/>
+                    <span>Symptoms</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="topic0" value="Tests" class="with-gap"/>
+                    <span>Tests</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="topic0" value="Treatments" class="with-gap"/>
+                    <span>Treatments</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" name="topic0" value="Other" class="with-gap"/>
+                    <span>Other</span>
+                </label>
+            </div>
+            <div class="input-field">
+                <textarea name="categoricalText" id="categoricalText0"></textarea>
+            </div>
+            <span id="addTopic" class="btn blue">Add another topic</span>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
+
+
+{{!<div class="row">
+    <form action="/stories" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title">
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    <option value="private" selected>Private</option>
+                    <option value="public">Public</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <h5>Tell your story:</h5>
+                <textarea id="body" name="body"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>}}

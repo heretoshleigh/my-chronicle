@@ -1,0 +1,36 @@
+<h1>Public Chronicles</h1>
+<div class="row">
+    {{#each stories}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{{editIcon user ../user _id}}}
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5>
+                {{#if freestyleBody}}
+                    <p>{{stripTags (truncate freestyleBody 150)}}</p>
+                {{/if}}
+                {{#if chronologicalBody}}
+                    <span>{{chronologicalBody.[0].startDate}} - {{chronologicalBody.[0].endDate}}</span>
+                    <p>{{stripTags (truncate chronologicalBody.[0].chronologicalText 150)}}</p>
+                {{/if}}
+                {{#if categoricalBody}}
+                    <span>{{categoricalBody.[0].topic}}</span>
+                    <p>{{stripTags (truncate categoricalBody.[0].categoricalText 150)}}</p>
+                {{/if}}
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/stories/user/{{user._id}}">{{user.displayName}}</a>
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No chronicles to display</p>
+    {{/each}}
+</div>

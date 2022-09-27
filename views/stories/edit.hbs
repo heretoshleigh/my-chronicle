@@ -1,0 +1,96 @@
+<h3>Edit a chronicle</h3>
+<div class="row">
+    <form action="/stories/{{story._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+
+        <div class="row">
+            <div class="input-field">
+                <select name="status" id="status" class="select">
+                    {{#select story.status}}
+                    <option value="private">Private</option>
+                    <option value="public">Public</option>
+                    {{/select}}
+                </select>
+                <label for="status">Privacy Status</label>
+            </div>
+        </div>        
+        
+        <div class="row">
+            <div class="input-field">
+                <input type="text" name="title" value="{{story.title}}" id="title">
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        {{#if story.freestyleBody}}
+            <div id="freestyle" class="row section">
+                <div class="input-field">
+                    <h6>Tell your story freestyle, organizing it in any way that makes sense to you:</h6>
+                    <textarea name="freestyleText">{{story.freestyleText}}</textarea>
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if story.chronologicalBody}}
+            <div id="chronological" class="row section">
+                <h6>Tell your story chronologically, organizing it into periods of time that feel meaningful to you:</h6>
+                {{#each story.chronologicalBody}}
+                    <div class="input-field">
+                        <div class="row">
+                            <div class="col l6">
+                                <input type="text" name="startDate" value="{{this.startDate}}" id="startDate{{@index}}" class="datepicker">
+                                <label for="#startDate{{@index}}">Start Date</label>
+                            </div>
+                            <div class="col l6">
+                                <input type="text" name="endDate" value="{{this.endDate}}" id="endDate{{@index}}" class="datepicker">
+                                <label for="#endDate{{@index}}">End Date</label>
+                            </div>
+                        </div>
+                        <textarea name="chronologicalText" id="chronologicalText{{@index}}">{{this.chronologicalText}}</textarea>
+                    </div>
+                {{/each}}
+                <span id="addPeriod" class="btn red">Add another time period</span>
+            </div>
+        {{/if}}
+
+        {{#if story.categoricalBody}}
+            <div class="row section" id="categorical">
+                <h6>Tell your story topic by topic, organizing it into categories related to your illness:</h6>
+                {{#each story.categoricalBody}}
+                    <div class="section">
+                        <label class="radio">
+                            <input type="radio" name="topic{{@index}}" value="Context" class="with-gap" {{checked this.topic "Context"}}/>
+                            <span>Context</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="topic{{@index}}" value="Symptoms" class="with-gap" {{checked this.topic "Symptoms"}}/>
+                            <span>Symptoms</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="topic{{@index}}" value="Tests" class="with-gap" {{checked this.topic "Tests"}}/>
+                            <span>Tests</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="topic{{@index}}" value="Treatments" class="with-gap" {{checked this.topic "Treatments"}}/>
+                            <span>Treatments</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="topic{{@index}}" value="Other" class="with-gap" {{checked this.topic "Other"}}/>
+                            <span>Other</span>
+                        </label>
+                    </div>
+
+                    <div class="input-field">
+                        <textarea name="categoricalText" id="categoricalText{{@index}}">{{this.categoricalText}}</textarea>
+                    </div>
+                {{/each}}
+                <span id="addTopic" class="btn blue">Add another topic</span>
+            </div>
+        {{/if}}
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
