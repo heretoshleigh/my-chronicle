@@ -1,6 +1,10 @@
 # My Chronicle
 This full-stack web application helps people with chronic, undiagnosed illnesses capture and communicate key details about their health.
 
+[Visit live site](https://my-chronicle.onrender.com/)
+
+![my-chronicle](https://user-images.githubusercontent.com/101761079/192605947-effaca6e-4a74-4a32-8067-cf5b478789e1.jpg)
+
 ### Tech used:
 HTML, CSS, JavaScript, Node.js, Express, MongoDB with Google OAuth for authentication and Handlebars as the templating engine
 
