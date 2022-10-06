@@ -4,7 +4,7 @@ const { ensureAuth } = require('../middleware/auth')
 const upload = require("../middleware/multer")
 const cloudinary = require("../middleware/cloudinary")
 
-const Story = require('../models/Record')
+const Record = require('../models/Record')
 
 // @desc    Show add record page
 // @route   GET /records/add
@@ -20,15 +20,15 @@ router.post('/', ensureAuth, upload.single('record'), async (req, res) => {
   try {
     req.body.user = req.user.id
     console.log(req.body)
-    console.log(req.record)
+    console.log(req.file)
 
     //Upload file to cloudinary
-    const result = await cloudinary.uploader.upload(req.record.path)
+    const result = await cloudinary.uploader.upload(req.file.path)
 
     await Record.create({
       title: req.body.title,
       recordType: req.body.recordType,
-      filePath: result.scure_url,
+      filePath: result.secure_url,
       cloudinaryId: result.public_id,
       user: req.body.user
     })
