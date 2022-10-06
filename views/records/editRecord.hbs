@@ -1,13 +1,14 @@
 <h3>Edit a record</h3>
 
 <div class="row">
-    <a href="{{record.filePath}}" class="btn">Current file</a>
+    
 
     <form action="/records/{{record._id}}" method="POST" class="col s12">
         <input type="hidden" name="_method" value="PUT">
         
-        <div class="file-field input-field">
-            <div class="btn grey">
+        <div class="file-field input-field row">
+            <a href="{{record.filePath}}" class="btn">Current file</a>
+            <div class="btn grey new-file-btn">
                 <span>New file</span>
                 <input type="file" name="record">
             </div>
