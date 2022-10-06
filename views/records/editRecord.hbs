@@ -1,0 +1,43 @@
+<h3>Edit a record</h3>
+
+<div class="row">
+
+    <form action="/records/{{record._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        {{!-- Need to figure out how to prepopulate file, if that's even possible --}}
+        <div class="file-field input-field">
+            <div class="btn grey">
+                <span>File</span>
+                <input type="file" name="record">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Choose a file to upload">
+            </div>
+        </div>    
+        <div class="row section">
+            <div class="input-field">
+                <select name="recordType" id="recordType" class="select">
+                    {{#select record.recordType}}
+                    <option value=""></option>
+                    <option value="doctor visit">Doctor Visit</option>
+                    <option value="test result">Test Result</option>
+                    <option value="prescription">Prescription</option>
+                    <option value="other">Other</option>
+                    {{/select}}
+                </select>
+                <label for="recordType">What type of record is this?</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <input type="text" name="title" value="{{record.title}}" id="title" >
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Upload" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+
+</div>

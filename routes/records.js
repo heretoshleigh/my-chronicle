@@ -6,7 +6,7 @@ const cloudinary = require("../middleware/cloudinary")
 
 const Story = require('../models/Record')
 
-// @desc    Show add page
+// @desc    Show add record page
 // @route   GET /records/add
 router.get('/add', ensureAuth, (req, res) => {
   res.render('records/addRecord', {
@@ -14,7 +14,7 @@ router.get('/add', ensureAuth, (req, res) => {
   })
 })
 
-// // @desc    Process add form
+// // @desc    Process add record form
 // // @route   POST /records
 router.post('/', ensureAuth, upload.single('record'), async (req, res) => {
   try {
@@ -114,20 +114,20 @@ router.post('/', ensureAuth, upload.single('record'), async (req, res) => {
 //   }
 // })
 
-// // @desc    Delete story
-// // @route   DELETE /stories/:id
+// @desc    Delete record
+// @route   DELETE /records/:id
 // router.delete('/:id', ensureAuth, async (req, res) => {
 //   try {
-//     let story = await Story.findById(req.params.id).lean()
+//     let record = await Record.findById(req.params.id).lean()
 
-//     if (!story) {
+//     if (!record) {
 //       return res.render('error/404')
 //     }
 
-//     if (story.user != req.user.id) {
+//     if (record.user != req.user.id) {
 //       res.redirect('/stories')
 //     } else {
-//       await Story.remove({ _id: req.params.id })
+//       await Record.remove({ _id: req.params.id })
 //       res.redirect('/dashboard')
 //     }
 //   } catch (err) {

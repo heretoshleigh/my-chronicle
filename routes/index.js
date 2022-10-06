@@ -33,9 +33,11 @@ router.get('/login', ensureGuest, (req, res) => {
 router.get('/dashboard', ensureAuth, async (req, res) => {
   try {
     const stories = await Story.find({ user: req.user.id }).lean()
+    // const records = await Record.find({ user: req.user.id }).lean()
     res.render('dashboard', {
       name: req.user.firstName,
       stories,
+      // records,
     })
   } catch (err) {
     console.error(err)

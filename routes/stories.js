@@ -4,7 +4,7 @@ const { ensureAuth } = require('../middleware/auth')
 
 const Story = require('../models/Story')
 
-// @desc    Show add page
+// @desc    Show add chronicle page
 // @route   GET /stories/add
 router.get('/add', ensureAuth, (req, res) => {
   res.render('stories/add', {
@@ -12,7 +12,7 @@ router.get('/add', ensureAuth, (req, res) => {
   })
 })
 
-// @desc    Process add form
+// @desc    Process add chronicle form
 // @route   POST /stories
 router.post('/', ensureAuth, async (req, res) => {
   try {
@@ -39,7 +39,7 @@ router.post('/', ensureAuth, async (req, res) => {
         })
       }
     }
-    //Add story
+    //Add chronicle
     await Story.create({
       chronicleType: req.body.chronicleType,
       status: req.body.status,
