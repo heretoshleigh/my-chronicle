@@ -56,7 +56,7 @@ router.post('/', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    Show all stories
+// @desc    Show all public chronicles
 // @route   GET /stories
 router.get('/', ensureAuth, async (req, res) => {
   try {
@@ -74,7 +74,7 @@ router.get('/', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    Show single story
+// @desc    Show single chronicle
 // @route   GET /stories/:id
 router.get('/:id', ensureAuth, async (req, res) => {
   try {
@@ -97,7 +97,7 @@ router.get('/:id', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    Show edit page
+// @desc    Show edit chronicle page
 // @route   GET /stories/edit/:id
 router.get('/edit/:id', ensureAuth, async (req, res) => {
   try {
@@ -123,7 +123,7 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    Update story
+// @desc    Process edit chronicle form
 // @route   PUT /stories/:id
 router.put('/:id', ensureAuth, async (req, res) => {
   try {
@@ -149,7 +149,7 @@ router.put('/:id', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    Delete story
+// @desc    Delete chronicle
 // @route   DELETE /stories/:id
 router.delete('/:id', ensureAuth, async (req, res) => {
   try {
@@ -171,7 +171,7 @@ router.delete('/:id', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    User stories
+// @desc    Show all public stories by user
 // @route   GET /stories/user/:userId
 router.get('/user/:userId', ensureAuth, async (req, res) => {
   try {

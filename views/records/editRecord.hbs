@@ -1,13 +1,14 @@
 <h3>Edit a record</h3>
 
 <div class="row">
+    <a href="{{record.filePath}}" class="btn">Current file</a>
 
     <form action="/records/{{record._id}}" method="POST" class="col s12">
         <input type="hidden" name="_method" value="PUT">
-        {{!-- Need to figure out how to prepopulate file, if that's even possible --}}
+        
         <div class="file-field input-field">
             <div class="btn grey">
-                <span>File</span>
+                <span>New file</span>
                 <input type="file" name="record">
             </div>
             <div class="file-path-wrapper">
@@ -35,7 +36,7 @@
             </div>
         </div>
         <div class="row">
-            <input type="submit" value="Upload" class="btn">
+            <input type="submit" value="Save changes" class="btn">
             <a href="/dashboard" class="btn orange">Cancel</a>
         </div>
     </form>
