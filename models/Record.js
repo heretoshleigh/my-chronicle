@@ -8,8 +8,11 @@ const RecordSchema = new mongoose.Schema({
   },
   recordType: {
     type: String,
-    enum: ['doctor visit', 'test result', 'prescription', 'other'],
+    enum: ['Doctor Visit', 'Test Result', 'Prescription', 'Other'],
     required: true,
+  },
+  notes: {
+    type: String,
   },
   filePath: {
     type: String,

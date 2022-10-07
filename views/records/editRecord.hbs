@@ -2,29 +2,32 @@
 
 <div class="row">
     
-
-    <form action="/records/{{record._id}}" method="POST" class="col s12">
+    <form action="/records/{{record._id}}" method="POST" enctype="multipart/form-data" class="col s12">
         <input type="hidden" name="_method" value="PUT">
         
-        <div class="file-field input-field row">
-            <a href="{{record.filePath}}" class="btn">Current file</a>
-            <div class="btn grey new-file-btn">
+        <div class="row section">
+            <a href="{{record.filePath}}" class="btn">View current file</a>
+        </div>
+
+        <div class="row file-field input-field">
+            <div class="btn grey">
                 <span>New file</span>
                 <input type="file" name="record">
             </div>
             <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" placeholder="Choose a file to upload">
+                <input class="file-path validate" type="text" placeholder="Choose a new file to upload">
             </div>
-        </div>    
+        </div>
+ 
         <div class="row section">
             <div class="input-field">
                 <select name="recordType" id="recordType" class="select">
                     {{#select record.recordType}}
                     <option value=""></option>
-                    <option value="doctor visit">Doctor Visit</option>
-                    <option value="test result">Test Result</option>
-                    <option value="prescription">Prescription</option>
-                    <option value="other">Other</option>
+                    <option value="Doctor Visit">Doctor Visit</option>
+                    <option value="Test Result">Test Result</option>
+                    <option value="Prescription">Prescription</option>
+                    <option value="Other">Other</option>
                     {{/select}}
                 </select>
                 <label for="recordType">What type of record is this?</label>
@@ -35,6 +38,12 @@
                 <input type="text" name="title" value="{{record.title}}" id="title" >
                 <label for="title">Title</label>
             </div>
+        </div>
+        <div class="row section">
+          <div class="input-field">
+            <h6>Notes on the significance of this record:</h6>
+            <textarea name="recordNotes">{{record.notes}}</textarea>
+          </div>
         </div>
         <div class="row">
             <input type="submit" value="Save changes" class="btn">

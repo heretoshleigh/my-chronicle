@@ -29,8 +29,8 @@ p {
   margin-right: 25px;
 }
 
-.new-file-btn {
-  margin-left: 10px;
+.block {
+  display: block;
 }
 
 /* Fix for cut-off month in datepicker: */
