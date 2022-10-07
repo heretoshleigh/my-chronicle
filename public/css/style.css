@@ -29,6 +29,10 @@ p {
   margin-right: 25px;
 }
 
+#removePeriod, #removeTopic{
+  display: none;
+}
+
 /* Fix for cut-off month in datepicker: */
 .datepicker-controls .select-month input {
   width: 5em;
