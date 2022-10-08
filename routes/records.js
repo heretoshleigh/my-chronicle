@@ -19,8 +19,6 @@ router.get('/add', ensureAuth, (req, res) => {
 router.post('/', ensureAuth, upload.single('record'), async (req, res) => {
   try {
     req.body.user = req.user.id
-    console.log(req.body)
-    console.log(req.file)
 
     //Upload file to cloudinary
     const result = await cloudinary.uploader.upload(req.file.path)
@@ -92,8 +90,6 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
 // // @desc    Process edit record form
 // // @route   PUT /records/:id
 router.put('/:id', ensureAuth, upload.single('record'), async (req, res) => {
-  console.log(req.body)
-  console.log(req.file)
   try {
     let record = await Record.findById(req.params.id).lean()
 
@@ -104,10 +100,16 @@ router.put('/:id', ensureAuth, upload.single('record'), async (req, res) => {
     if (record.user != req.user.id) {
       res.redirect('/stories')
     } else {
-      //Upload file to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path)
+      //If request includes new file, upload file to cloudinary
+      const result = req.file ? await cloudinary.uploader.upload(req.file.path) : null;
 
-      record = await Record.findOneAndUpdate({ _id: req.params.id }, req.body, req.file, {
+      //Find and update record in database, validating against model and returning updated document
+      record = await Record.findOneAndUpdate({ _id: req.params.id }, 
+        { $set: {
+          title: req.body.title,
+          recordType: req.body.recordType,
+          notes: req.body.recordNotes,
+          filePath: result ? result.secure_url : record.filePath },
         new: true,
         runValidators: true,
       })

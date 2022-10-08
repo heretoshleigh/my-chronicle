@@ -2,8 +2,7 @@
 
 <div class="row">
     
-    <form action="/records/{{record._id}}" method="POST" enctype="multipart/form-data" class="col s12">
-        <input type="hidden" name="_method" value="PUT">
+    <form action="/records/{{record._id}}?_method=PUT" method="POST" enctype="multipart/form-data" class="col s12">
         
         <div class="row section">
             <a href="{{record.filePath}}" class="btn">View current file</a>

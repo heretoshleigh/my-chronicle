@@ -1,7 +1,6 @@
 <h3>Edit a chronicle</h3>
 <div class="row">
-    <form action="/stories/{{story._id}}" method="POST" class="col s12">
-        <input type="hidden" name="_method" value="PUT">
+    <form action="/stories/{{story._id}}?_method=PUT" method="POST" class="col s12">
 
         <div class="row">
             <div class="input-field">
@@ -49,7 +48,7 @@
                         <textarea name="chronologicalText" id="chronologicalText{{@index}}">{{this.chronologicalText}}</textarea>
                     </div>
                 {{/each}}
-                <span id="addPeriod" class="btn red">Add another time period</span>
+                <span id="addPeriod" class="btn blue">Add time period</span>
             </div>
         {{/if}}
 
@@ -84,7 +83,7 @@
                         <textarea name="categoricalText" id="categoricalText{{@index}}">{{this.categoricalText}}</textarea>
                     </div>
                 {{/each}}
-                <span id="addTopic" class="btn blue">Add another topic</span>
+                <span id="addTopic" class="btn blue">Add topic</span>
             </div>
         {{/if}}
 

@@ -66,8 +66,7 @@
                             <i class="fas fa-edit"></i>
                         </a>
     
-                        <form action="/records/{{_id}}" method="POST" id="delete-form">
-                            <input type="hidden" name="_method" value="DELETE">
+                        <form action="/records/{{_id}}?_method=DELETE" method="POST" id="delete-form">
                             <button type="submit" class="btn red">
                                 <i class="fas fa-trash"></i>
                             </button>

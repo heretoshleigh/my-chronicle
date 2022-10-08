@@ -21,16 +21,15 @@ connectDB()
 const app = express()
 
 // Body parser
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Method override
 app.use(
   methodOverride(function (req, res) {
-    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-      // look in urlencoded POST bodies and delete it
-      let method = req.body._method
-      delete req.body._method
+    if (req.query && typeof req.query === 'object' && '_method' in req.query) {
+      let method = req.query._method
+      delete req.query._method
       return method
     }
   })
