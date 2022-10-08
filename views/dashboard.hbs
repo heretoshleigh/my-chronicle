@@ -1,37 +1,84 @@
 <h3>Welcome {{name}}</h3>
-{{#if stories}}
-<p>Here are your chronicles:</p>
-<table class="striped">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each stories}}
-        <tr>
-            <td><a href="/stories/{{_id}}">{{title}}</a></td>
-            <td>{{formatDate createdAt 'LL'}}</td>
-            <td><span class="dash-status">{{status}}</span></td>
-            <td>
-                <a href="/stories/edit/{{_id}}" class="btn btn-float">
-                    <i class="fas fa-edit"></i>
-                </a>
 
-                <form action="/stories/{{_id}}" method="POST" id="delete-form">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn red">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-{{else}}
-<p>You have not created any chronicles yet.</p>
-{{/if}}
+<div id="chronicles">
+    <div class="section">
+        <h5>Chronicles</h5>
+        {{#if stories}}
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Created On</th>
+                    <th>Privacy Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each stories}}
+                <tr>
+                    <td><a href="/stories/{{_id}}">{{title}}</a></td>
+                    <td>{{formatDate createdAt 'LL'}}</td>
+                    <td><span>{{status}}</span></td>
+                    <td>
+                        <a href="/stories/edit/{{_id}}" class="btn btn-float">
+                            <i class="fas fa-edit"></i>
+                        </a>
+    
+                        <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn red">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>You have not created any chronicles yet.</p>
+        {{/if}}
+    </div>
+    <a href="/stories/add" class="btn blue">Add a chronicle</a>
+</div>
+
+<div id="records">
+    <div class="section">
+        <h5>Medical Records</h5>
+        {{#if records}}
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Uploaded On</th>
+                    <th>Record Type</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each records}}
+                <tr>
+                    <td><a href="/records/{{_id}}">{{title}}</a></td>
+                    <td>{{formatDate createdAt 'LL'}}</td>
+                    <td><span>{{recordType}}</span></td>
+                    <td>
+                        <a href="/records/edit/{{_id}}" class="btn btn-float">
+                            <i class="fas fa-edit"></i>
+                        </a>
+    
+                        <form action="/records/{{_id}}?_method=DELETE" method="POST" id="delete-form">
+                            <button type="submit" class="btn red">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>You have not uploaded any medical records yet.</p>
+        {{/if}}
+    </div>
+    <a href="/records/add" class="btn blue">Add a record</a>
+</div>

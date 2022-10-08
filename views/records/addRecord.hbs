@@ -1,0 +1,45 @@
+<h3>Add a new medical record</h3>
+
+<div class="row section">
+
+    <form action="/records" method="POST" enctype="multipart/form-data" class="col s12">
+        <div class="row file-field input-field">
+            <div class="btn grey">
+                <span>File</span>
+                <input type="file" name="record">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Choose a file to upload">
+            </div>
+        </div>    
+        <div class="row section">
+            <div class="input-field">
+                <select name="recordType" id="recordType" class="select">
+                    <option value=""></option>
+                    <option value="Doctor Visit">Doctor Visit</option>
+                    <option value="Test Result">Test Result</option>
+                    <option value="Prescription">Prescription</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="recordType">What type of record is this?</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field">
+                <input type="text" name="title" id="title" >
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row section">
+          <div class="input-field">
+            <h6>Notes on the significance of this record:</h6>
+            <textarea name="recordNotes"></textarea>
+          </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Upload" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+
+</div>

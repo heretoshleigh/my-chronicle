@@ -7,7 +7,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
 
 // Load config
@@ -21,16 +21,15 @@ connectDB()
 const app = express()
 
 // Body parser
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Method override
 app.use(
   methodOverride(function (req, res) {
-    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-      // look in urlencoded POST bodies and delete it
-      let method = req.body._method
-      delete req.body._method
+    if (req.query && typeof req.query === 'object' && '_method' in req.query) {
+      let method = req.query._method
+      delete req.query._method
       return method
     }
   })
@@ -96,6 +95,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/stories', require('./routes/stories'))
+app.use('/records', require('./routes/records'))
 
 const PORT = process.env.PORT || 3000
 
