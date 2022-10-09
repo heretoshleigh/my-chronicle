@@ -32,8 +32,9 @@ if(addPeriodBtn){
 }
 
 function addPeriod(){
+    //Add time period
     const previousPeriod = addPeriodBtn.previousElementSibling;
-    const previousId = previousPeriod.querySelector('[id^="startDate"]').id[9];
+    const previousId = previousPeriod.querySelector('[id^="chronologicalText"]').id.match(/\d+/g);
     const newId = +previousId + 1;
     const newPeriod = 
         `<div class="input-field">
@@ -49,10 +50,19 @@ function addPeriod(){
             </div>
             <textarea name="chronologicalText" id="chronologicalText${newId}"></textarea>
         </div>`;
-    removePeriodBtn.style.display = 'inline-block'
     previousPeriod.insertAdjacentHTML('afterend', newPeriod);
+
+    //Show remove period button
+    removePeriodBtn.style.display = 'inline-block'
+
+    //Reinitialize materialize datepicker and ckeditor
     M.Datepicker.init(document.querySelectorAll('.datepicker'));
     CKEDITOR.replace(`chronologicalText${newId}`);
+}
+
+//If only one time period, hide remove period button
+if(removePeriodBtn && removePeriodBtn.parentElement.getElementsByTagName('textarea').length === 1){
+    removePeriodBtn.style.display = 'none';
 }
 
 //Remove time periods from chronological form
@@ -70,15 +80,16 @@ function removePeriod(){
 
 //Add topics to categorical form
 const addTopicBtn = document.getElementById('addTopic');
-const removeTopicBtn = document.getElementById('removeTopic')
+const removeTopicBtn = document.getElementById('removeTopic');
 
 if(addTopicBtn){
     addTopicBtn.addEventListener('click', addTopic);
 }
 
 function addTopic(){
+    //Add topic
     const previousTopic = addTopicBtn.previousElementSibling;
-    const previousId = previousTopic.querySelector('[id^="categoricalText"]').id[15];
+    const previousId = previousTopic.querySelector('[id^="categoricalText"]').id.match(/\d+/g);
     const newId = +previousId + 1;
     const newTopic = 
         `<div class="section">
@@ -102,16 +113,25 @@ function addTopic(){
                 <input type="radio" name="topic${newId}" value="Other" class="with-gap"/>
                 <span>Other</span>
             </label>
-        </div>
-        <div class="input-field">
-            <textarea name="categoricalText" id="categoricalText${newId}"></textarea>
-        </div>`
-    removeTopicBtn.style.display = 'inline-block'
+            <div class="input-field">
+                <textarea name="categoricalText" id="categoricalText${newId}"></textarea>
+            </div>
+        </div>`;
     previousTopic.insertAdjacentHTML('afterend', newTopic);
+
+    //Show remove topic button
+    removeTopicBtn.style.display = 'inline-block'
+
+    //Reinitialize ckeditor
     CKEDITOR.replace(`categoricalText${newId}`);
 }
 
-//Remove topics from chronological form
+//If only one topic, hide remove topic button
+if(removeTopicBtn && removeTopicBtn.parentElement.getElementsByTagName('textarea').length === 1){
+    removeTopicBtn.style.display = 'none';
+}
+
+//Remove topics from categorical form
 if(removeTopicBtn){
     removeTopicBtn.addEventListener('click', removeTopic);
 }

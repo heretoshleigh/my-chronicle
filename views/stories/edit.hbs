@@ -25,7 +25,7 @@
             <div id="freestyle" class="row section">
                 <div class="input-field">
                     <h6>Tell your story freestyle, organizing it in any way that makes sense to you:</h6>
-                    <textarea name="freestyleText">{{story.freestyleText}}</textarea>
+                    <textarea name="freestyleText">{{story.freestyleBody}}</textarea>
                 </div>
             </div>
         {{/if}}
@@ -54,7 +54,7 @@
         {{/if}}
 
         {{#if story.categoricalBody}}
-            <div class="row section" id="categorical">
+            <div id="categorical" class="row section">
                 <h6>Tell your story topic by topic, organizing it into categories related to your illness:</h6>
                 {{#each story.categoricalBody}}
                     <div class="section">
@@ -78,10 +78,9 @@
                             <input type="radio" name="topic{{@index}}" value="Other" class="with-gap" {{checked this.topic "Other"}}/>
                             <span>Other</span>
                         </label>
-                    </div>
-
-                    <div class="input-field">
-                        <textarea name="categoricalText" id="categoricalText{{@index}}">{{this.categoricalText}}</textarea>
+                        <div class="input-field">
+                            <textarea name="categoricalText" id="categoricalText{{@index}}">{{this.categoricalText}}</textarea>
+                        </div>
                     </div>
                 {{/each}}
                 <span id="addTopic" class="btn blue">Add topic</span>
@@ -93,5 +92,6 @@
             <input type="submit" value="Save changes" class="btn">
             <a href="/dashboard" class="btn orange">Cancel</a>
         </div>
+        
     </form>
 </div>

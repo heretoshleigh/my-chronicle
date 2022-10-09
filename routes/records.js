@@ -9,9 +9,7 @@ const Record = require('../models/Record')
 // @desc    Show add record page
 // @route   GET /records/add
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('records/addRecord', {
-    layout: 'add-edit',
-  })
+  res.render('records/addRecord')
 })
 
 // // @desc    Process add record form
@@ -78,7 +76,6 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
     } else {
       res.render('records/editRecord', {
         record,
-        layout: 'add-edit',
       })
     }
   } catch (err) {

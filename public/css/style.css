@@ -29,10 +29,6 @@ p {
   margin-right: 25px;
 }
 
-#removePeriod, #removeTopic{
-  display: none;
-}
-
 .block {
   display: block;
 }

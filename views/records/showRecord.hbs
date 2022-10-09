@@ -9,7 +9,10 @@
                 <div class="card-content">
                     <a href="{{record.filePath}}" class="btn">View file</a>
                     <span class="block section">Record Type: {{record.recordType}}</span>
-                    {{#if notes}}<p>Notes: {{record.notes}}</p>{{/if}}
+                    {{#if record.notes}}
+                        <span>Notes:</span>
+                        {{{record.notes}}}
+                    {{/if}}
                 </div>
             </div>
         </div>

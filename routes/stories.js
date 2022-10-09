@@ -7,9 +7,7 @@ const Story = require('../models/Story')
 // @desc    Show add chronicle page
 // @route   GET /stories/add
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('stories/add', {
-    layout: 'add-edit',
-  })
+  res.render('stories/add')
 })
 
 // @desc    Process add chronicle form
@@ -114,7 +112,6 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
     } else {
       res.render('stories/edit', {
         story,
-        layout: 'add-edit',
       })
     }
   } catch (err) {
