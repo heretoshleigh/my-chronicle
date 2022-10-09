@@ -4,7 +4,7 @@
     <div class="section">
         <h5>Chronicles</h5>
         {{#if stories}}
-        <table class="striped">
+        <table class="striped responsive-table">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -16,16 +16,16 @@
             <tbody>
                 {{#each stories}}
                 <tr>
-                    <td><a href="/stories/{{_id}}">{{title}}</a></td>
-                    <td>{{formatDate createdAt 'LL'}}</td>
-                    <td><span>{{status}}</span></td>
-                    <td>
-                        <a href="/stories/edit/{{_id}}" class="btn btn-float">
+                    <td class="title-column"><a href="/stories/{{_id}}" class="light-blue-text text-darken-3">{{title}}</a></td>
+                    <td class="date-column">{{formatDate createdAt 'LL'}}</td>
+                    <td class="type-column"><span>{{status}}</span></td>
+                    <td class="icons-column">
+                        <a href="/stories/edit/{{_id}}" class="btn btn-float light-blue darken-3">
                             <i class="fas fa-edit"></i>
                         </a>
     
                         <form action="/stories/{{_id}}?_method=DELETE" method="POST">
-                            <button type="submit" class="btn red">
+                            <button type="submit" class="btn red lighten-1">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -38,14 +38,14 @@
         <p>You have not created any chronicles yet.</p>
         {{/if}}
     </div>
-    <a href="/stories/add" class="btn blue">Add chronicle</a>
+    <a href="/stories/add" class="btn teal darken-1">Add chronicle</a>
 </div>
 
 <div id="records">
     <div class="section">
         <h5>Medical Records</h5>
         {{#if records}}
-        <table class="striped">
+        <table class="striped responsive-table">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -57,16 +57,16 @@
             <tbody>
                 {{#each records}}
                 <tr>
-                    <td><a href="/records/{{_id}}">{{title}}</a></td>
-                    <td>{{formatDate createdAt 'LL'}}</td>
-                    <td><span>{{recordType}}</span></td>
-                    <td>
-                        <a href="/records/edit/{{_id}}" class="btn btn-float">
+                    <td class="title-column"><a href="/records/{{_id}}" class="light-blue-text text-darken-3">{{title}}</a></td>
+                    <td class="date-column">{{formatDate createdAt 'LL'}}</td>
+                    <td class="type-column"><span>{{recordType}}</span></td>
+                    <td class="icons-column">
+                        <a href="/records/edit/{{_id}}" class="btn btn-float light-blue darken-3">
                             <i class="fas fa-edit"></i>
                         </a>
     
                         <form action="/records/{{_id}}?_method=DELETE" method="POST">
-                            <button type="submit" class="btn red">
+                            <button type="submit" class="btn red lighten-1">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -79,5 +79,5 @@
         <p>You have not uploaded any medical records yet.</p>
         {{/if}}
     </div>
-    <a href="/records/add" class="btn blue">Add medical record</a>
+    <a href="/records/add" class="btn teal darken-1">Add medical record</a>
 </div>

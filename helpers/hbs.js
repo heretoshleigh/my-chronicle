@@ -21,14 +21,14 @@ module.exports = {
     if (docUser._id.toString() == loggedUser._id.toString()) {
       if (docType === 'chronicle') {
         if (floating) {
-          return `<a href="/stories/edit/${docId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
+          return `<a href="/stories/edit/${docId}" class="btn-floating halfway-fab light-blue darken-3"><i class="fas fa-edit fa-small"></i></a>`
         } else {
           return `<a href="/stories/edit/${docId}"><i class="fas fa-edit"></i></a>`
         }
       }
       else if (docType === 'record') {
         if (floating) {
-          return `<a href="/records/edit/${docId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
+          return `<a href="/records/edit/${docId}" class="btn-floating halfway-fab light-blue darken-3"><i class="fas fa-edit fa-small"></i></a>`
         } else {
           return `<a href="/records/edit/${docId}"><i class="fas fa-edit"></i></a>`
         }

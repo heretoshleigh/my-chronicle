@@ -33,6 +33,26 @@ p {
   display: block;
 }
 
+.chip {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*Set table columns to fixed widths */
+.title-column {
+  width: 40%;
+}
+
+.date-column, .type-column {
+  width: 20%
+}
+
+.icons-column {
+  min-width: 115px;
+}
+
 /* Fix for cut-off month in datepicker: */
 .datepicker-controls .select-month input {
   width: 5em;
