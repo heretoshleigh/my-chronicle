@@ -82,3 +82,30 @@ p {
 .block {
   display: block;
 }
+
+/*Fix header for mobile*/
+@media screen and (max-width: 600px){
+  nav .fas{
+    line-height: 56px;
+  }
+  nav .brand-logo{
+    white-space: nowrap;
+  }
+}
+
+/*Fix header for very small devices (galaxy fold)*/
+@media screen and (max-width: 350px){
+  nav .brand-logo, nav i{
+    font-size: 1.5rem;
+  }
+}
+
+/*Fix login for mobile*/
+@media screen and (max-width: 400px){
+  .login-container, .login-btn {
+    max-width: 100%;
+  }
+  .login-header {
+    font-size: 2.5rem;
+  }
+}
