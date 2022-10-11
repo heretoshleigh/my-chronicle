@@ -1,0 +1,38 @@
+<h3><i class="fas fa-laptop-medical"></i> MyChronicle</h3>
+<div class="section">
+    <p class="lead">Capture and communicate key details about a chronic, undiagnosed illness - in your own words.</p>
+</div>
+<div class="divider"></div>
+{{> _messages}}
+<div class="input-field">
+    <form action="/auth/local" method="POST">
+        <div>
+            <label for="email" class="left"></label>
+            <input type="email" name="email" id="email" placeholder="Email"/>
+            <label for="password" class="left"></label>
+            <input type="password" name="password" id="password" placeholder="Password"/>
+        </div>
+        <div class="section">
+            <button type="submit" class="btn teal darken-1">Submit</button>
+        </div>
+    </form>
+</div>
+<div>
+    <a href="/login" class="light-blue-text text-darken-3">Sign in a different way</a>
+</div>
+<div class="section">
+    <a href="/auth/signup" class="light-blue-text text-darken-3">No account yet? Sign up</a>
+</div>
+<div>
+    <form action="/auth/local" method="POST">
+        <div>
+            <label for="email" class="left"></label>
+            <input type="email" name="email" id="email" value="demo@mychronicle.com" hidden/>
+            <label for="password" class="left"></label>
+            <input type="password" name="password" id="password" value="Mzj-opeP_qC43!et" hidden/>
+        </div>
+        <div class="section">
+            <button type="submit" class="btn teal darken-1">Explore a demo account</button>
+        </div>
+    </form>
+</div>

@@ -1,7 +1,7 @@
 <h3>Public Chronicles</h3>
 <h5>You are not alone. Explore stories from other people living with chronic, undiagnosed illness.</h5>
 <div class="row section">
-    {{#each stories}}
+    {{#each chronicles}}
     <div class="col s12 m6 l4">
         <div class="card blue-grey">
             {{!-- <div class="card-image">
@@ -25,13 +25,13 @@
                 <br>
                 <div class="center-align">
                     <div class="chip">
-                        <img src="{{user.image}}" alt="User profile picture">
-                        <a href="/stories/user/{{user._id}}" class="grey-text text-darken-1">{{user.displayName}}</a>
+                        <img src="{{user.image}}" alt="">
+                        <a href="/chronicles/user/{{user._id}}" class="grey-text text-darken-1">{{user.displayName}}</a>
                     </div>
                 </div>
             </div>
             <div class="card-action center-align">
-                <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+                <a href="/chronicles/{{_id}}" class="btn grey">Read More</a>
             </div>
         </div>
     </div>

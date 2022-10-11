@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const StorySchema = new mongoose.Schema({
+const ChronicleSchema = new mongoose.Schema({
   chronicleType: {
     type: String,
     required: true,
@@ -33,4 +33,4 @@ const StorySchema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('Story', StorySchema)
+module.exports = mongoose.model('Chronicle', ChronicleSchema)

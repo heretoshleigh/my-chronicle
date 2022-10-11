@@ -1,11 +1,6 @@
+/*Base styles*/
 p {
   margin: 10px 0 !important;
-}
-
-.login-container {
-  width: 400px;
-  margin-top: 50px;
-  text-align: center;
 }
 
 .fa-small {
@@ -17,30 +12,37 @@ p {
   margin-right: 10px;
 }
 
-.img-small {
-  width: 180px;
-}
-
+/*Home page*/
 .banner{
   margin-top: 30px;
 }
 
-.radio {
-  margin-right: 25px;
+/*Login pages*/
+.login-container {
+  width: 400px;
+  margin-top: 50px;
+  text-align: center;
 }
 
-.block {
-  display: block;
+.login-btn {
+  width: 245px;
 }
 
-.chip {
-  max-width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.alert {
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: .5px;
 }
 
-/*Set table columns to fixed widths */
+.alert-multiple {
+  margin-top: 10px;
+}
+
+/*Set dashboard table columns to fixed widths */
 .title-column {
   width: 40%;
 }
@@ -53,12 +55,30 @@ p {
   min-width: 115px;
 }
 
-/* Fix for cut-off month in datepicker: */
+/*Fix for cut-off month in datepicker*/
 .datepicker-controls .select-month input {
   width: 5em;
 }
 
-/* Fix for wrapping date on the left in datepicker: */
+/*Fix for wrapping date in datepicker*/
 .datepicker-date-display .date-text{
   font-size: 2.2rem;
+}
+
+/*Add/edit chronicle radio spacing*/
+.radio {
+  margin-right: 25px;
+}
+
+/*Fix for chip overflow*/
+.chip {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*Show record*/
+.block {
+  display: block;
 }

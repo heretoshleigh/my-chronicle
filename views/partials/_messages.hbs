@@ -1,0 +1,21 @@
+{{#if errors}}
+    <div class="section">
+    {{#each errors}}
+        <div class="alert alert-multiple yellow lighten-3">
+            <span>{{this.[msg]}}</span>
+        </div>
+    {{/each}}
+    </div>
+{{/if}}
+
+{{#if success_msg}}
+    <div class="section">
+        <div class="alert light-blue lighten-1">{{success_msg}}</div>
+    </div>
+{{/if}}
+
+{{#if error}}
+    <div class="section">
+        <div class="alert yellow lighten-3">{{error}}</div>
+    </div>
+{{/if}}

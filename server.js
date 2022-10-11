@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
+const flash = require('connect-flash')
 const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
 
@@ -82,9 +83,15 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+//Connect flash
+app.use(flash())
+
 // Set global var
-app.use(function (req, res, next) {
-  res.locals.user = req.user || null
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next()
 })
 
@@ -94,7 +101,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
-app.use('/stories', require('./routes/stories'))
+app.use('/chronicles', require('./routes/chronicles'))
 app.use('/records', require('./routes/records'))
 
 const PORT = process.env.PORT || 3000

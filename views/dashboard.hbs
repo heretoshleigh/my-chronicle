@@ -3,7 +3,7 @@
 <div id="chronicles">
     <div class="section">
         <h5>Chronicles</h5>
-        {{#if stories}}
+        {{#if chronicles}}
         <table class="striped responsive-table">
             <thead>
                 <tr>
@@ -14,17 +14,17 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each stories}}
+                {{#each chronicles}}
                 <tr>
-                    <td class="title-column"><a href="/stories/{{_id}}" class="light-blue-text text-darken-3">{{title}}</a></td>
+                    <td class="title-column"><a href="/chronicles/{{_id}}" class="light-blue-text text-darken-3">{{title}}</a></td>
                     <td class="date-column">{{formatDate createdAt 'LL'}}</td>
                     <td class="type-column"><span>{{status}}</span></td>
                     <td class="icons-column">
-                        <a href="/stories/edit/{{_id}}" class="btn btn-float light-blue darken-3">
+                        <a href="/chronicles/edit/{{_id}}" class="btn btn-float light-blue darken-3">
                             <i class="fas fa-edit"></i>
                         </a>
     
-                        <form action="/stories/{{_id}}?_method=DELETE" method="POST">
+                        <form action="/chronicles/{{_id}}?_method=DELETE" method="POST">
                             <button type="submit" class="btn red lighten-1">
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -38,7 +38,7 @@
         <p>You have not created any chronicles yet.</p>
         {{/if}}
     </div>
-    <a href="/stories/add" class="btn teal darken-1">Add chronicle</a>
+    <a href="/chronicles/add" class="btn teal darken-1">Add chronicle</a>
 </div>
 
 <div id="records">

@@ -9,7 +9,7 @@ const Record = require('../models/Record')
 // @desc    Show add record page
 // @route   GET /records/add
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('records/addRecord')
+  res.render('records/add-record')
 })
 
 // // @desc    Process add record form
@@ -45,11 +45,10 @@ router.get('/:id', ensureAuth, async (req, res) => {
     if (!record) {
       return res.render('error/404')
     }
-
     if (record.user._id != req.user.id) {
       res.render('error/404')
     } else {
-      res.render('records/showRecord', {
+      res.render('records/show-record', {
         record,
       })
     }
@@ -63,18 +62,15 @@ router.get('/:id', ensureAuth, async (req, res) => {
 // // @route   GET /record/edit/:id
 router.get('/edit/:id', ensureAuth, async (req, res) => {
   try {
-    const record = await Record.findOne({
-      _id: req.params.id,
-    }).lean()
+    const record = await Record.findOne({ _id: req.params.id }).lean()
 
     if (!record) {
       return res.render('error/404')
     }
-
     if (record.user != req.user.id) {
-      res.redirect('/stories')
+      res.redirect('/dashboard')
     } else {
-      res.render('records/editRecord', {
+      res.render('records/edit-record', {
         record,
       })
     }
@@ -93,9 +89,8 @@ router.put('/:id', ensureAuth, upload.single('record'), async (req, res) => {
     if (!record) {
       return res.render('error/404')
     }
-
     if (record.user != req.user.id) {
-      res.redirect('/stories')
+      res.redirect('/dashboard')
     } else {
       //If request includes new file, upload file to cloudinary
       const result = req.file ? await cloudinary.uploader.upload(req.file.path) : null;
@@ -128,9 +123,8 @@ router.delete('/:id', ensureAuth, async (req, res) => {
     if (!record) {
       return res.render('error/404')
     }
-
     if (record.user != req.user.id) {
-      res.redirect('/stories')
+      res.redirect('/dashboard')
     } else {
       await Record.remove({ _id: req.params.id })
       res.redirect('/dashboard')

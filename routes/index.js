@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-const Story = require('../models/Story')
+const Chronicle = require('../models/Chronicle')
 const Record = require('../models/Record')
 
-// @desc    Landing page
+// @desc    Home page
 // @route   GET /
 router.get('/', ensureGuest, (req, res) => {
-  res.render('landing', {
+  res.render('index', {
     layout: 'landing',
   })
 })
@@ -24,7 +24,7 @@ router.get('/about', ensureGuest, (req, res) => {
 // // @desc    Login page
 // // @route   GET /login
 router.get('/login', ensureGuest, (req, res) => {
-  res.render('login', {
+  res.render('user/login', {
     layout: 'login',
   })
 })
@@ -33,11 +33,11 @@ router.get('/login', ensureGuest, (req, res) => {
 // @route   GET /dashboard
 router.get('/dashboard', ensureAuth, async (req, res) => {
   try {
-    const stories = await Story.find({ user: req.user.id }).lean()
+    const chronicles = await Chronicle.find({ user: req.user.id }).lean()
     const records = await Record.find({ user: req.user.id }).lean()
     res.render('dashboard', {
       name: req.user.firstName,
-      stories,
+      chronicles,
       records,
     })
   } catch (err) {

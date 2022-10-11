@@ -1,13 +1,13 @@
 <h3>Edit a chronicle</h3>
 <div class="row">
-    <form action="/stories/{{story._id}}?_method=PUT" method="POST" class="col s12">
+    <form action="/chronicles/{{chronicle._id}}?_method=PUT" method="POST" class="col s12">
 
         <div class="row">
             <div class="input-field">
                 <select name="status" id="status" class="select">
-                    {{#select story.status}}
-                    <option value="private">Private</option>
-                    <option value="public">Public</option>
+                    {{#select chronicle.status}}
+                    <option value="Private">Private</option>
+                    <option value="Public">Public</option>
                     {{/select}}
                 </select>
                 <label for="status">Privacy Status</label>
@@ -16,24 +16,24 @@
         
         <div class="row">
             <div class="input-field">
-                <input type="text" name="title" value="{{story.title}}" id="title">
+                <input type="text" name="title" value="{{chronicle.title}}" id="title">
                 <label for="title">Title</label>
             </div>
         </div>
 
-        {{#if story.freestyleBody}}
+        {{#if chronicle.freestyleBody}}
             <div id="freestyle" class="row section">
                 <div class="input-field">
                     <h6>Tell your story freestyle, organizing it in any way that makes sense to you:</h6>
-                    <textarea name="freestyleText">{{story.freestyleBody}}</textarea>
+                    <textarea name="freestyleText">{{chronicle.freestyleBody}}</textarea>
                 </div>
             </div>
         {{/if}}
 
-        {{#if story.chronologicalBody}}
+        {{#if chronicle.chronologicalBody}}
             <div id="chronological" class="row section">
                 <h6>Tell your story chronologically, organizing it into periods of time that feel meaningful to you:</h6>
-                {{#each story.chronologicalBody}}
+                {{#each chronicle.chronologicalBody}}
                     <div class="input-field">
                         <div class="row">
                             <div class="col l6">
@@ -53,10 +53,10 @@
             </div>
         {{/if}}
 
-        {{#if story.categoricalBody}}
+        {{#if chronicle.categoricalBody}}
             <div id="categorical" class="row section">
                 <h6>Tell your story topic by topic, organizing it into categories related to your illness:</h6>
-                {{#each story.categoricalBody}}
+                {{#each chronicle.categoricalBody}}
                     <div class="section">
                         <label class="radio">
                             <input type="radio" name="topic{{@index}}" value="Context" class="with-gap" {{checked this.topic "Context"}}/>

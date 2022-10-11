@@ -1,17 +1,17 @@
 <div class="row">
     <div class="col s12 m10 l10">
-        <h3>{{story.title}}
-            <small>{{{editIcon story.user user story._id 'chronicle' false}}}</small>
+        <h3>{{chronicle.title}}
+            <small>{{{editIcon chronicle.user user chronicle._id 'chronicle' false}}}</small>
         </h3>
         <h6>{{formatDate createdAt 'LL'}}</h6>
         <div class="section">
-            <div class="card story">
+            <div class="card">
                 <div class="card-content">
-                    {{#if story.freestyleBody}}
-                        {{{story.freestyleBody}}}
+                    {{#if chronicle.freestyleBody}}
+                        {{{chronicle.freestyleBody}}}
                     {{/if}}
-                    {{#if story.chronologicalBody}}
-                        {{#each story.chronologicalBody}}
+                    {{#if chronicle.chronologicalBody}}
+                        {{#each chronicle.chronologicalBody}}
                             <div class="section">
                                 <span>{{this.startDate}} - {{this.endDate}}</span>
                                 {{{this.chronologicalText}}}
@@ -19,8 +19,8 @@
                             <div class="divider"></div>
                         {{/each}}
                     {{/if}}
-                    {{#if story.categoricalBody}}
-                        {{#each story.categoricalBody}}
+                    {{#if chronicle.categoricalBody}}
+                        {{#each chronicle.categoricalBody}}
                             <div class="section">
                                 <span>{{this.topic}}</span>
                                 {{{this.categoricalText}}}
@@ -32,15 +32,4 @@
             </div>
         </div>
     </div>
-    {{!-- <div class="col s12 m4">
-        <div class="card center-align">
-            <div class="card-content">
-                <span class="card-title">{{story.user.displayName}}</span>
-                <img src="{{story.user.image}}" class="circle responsive-img img-small">
-            </div>
-            <div class="card-action">
-                <a href="/stories/user/{{story.user._id}}">More From {{story.user.firstName}}</a>
-            </div>
-        </div>
-    </div> --}}
 </div>
