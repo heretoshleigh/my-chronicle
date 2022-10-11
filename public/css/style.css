@@ -84,7 +84,7 @@ p {
 }
 
 /*Fix header for mobile*/
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
   nav .fas{
     line-height: 56px;
   }
@@ -94,18 +94,23 @@ p {
 }
 
 /*Fix header for very small devices (galaxy fold)*/
-@media screen and (max-width: 350px){
+@media screen and (max-width: 350px) {
   nav .brand-logo, nav i{
     font-size: 1.5rem;
   }
 }
 
 /*Fix login for mobile*/
-@media screen and (max-width: 400px){
+@media screen and (max-width: 400px) {
   .login-container, .login-btn {
     max-width: 100%;
   }
   .login-header {
     font-size: 2.5rem;
   }
+}
+
+/*Fix table for mobile*/
+table.responsive-table th {
+  display: none;
 }
