@@ -92,16 +92,18 @@ router.put('/:id', ensureAuth, upload.single('record'), async (req, res) => {
     if (record.user != req.user.id) {
       res.redirect('/dashboard')
     } else {
+      
       //If request includes new file, upload file to cloudinary
       const result = req.file ? await cloudinary.uploader.upload(req.file.path) : null;
 
       //Find and update record in database, validating against model and returning updated document
-      record = await Record.findOneAndUpdate({ _id: req.params.id }, 
-        { $set: {
+      record = await Record.findOneAndUpdate({ _id: req.params.id }, { 
+        $set: {
           title: req.body.title,
           recordType: req.body.recordType,
           notes: req.body.recordNotes,
-          filePath: result ? result.secure_url : record.filePath },
+          filePath: result ? result.secure_url : record.filePath 
+        },
         new: true,
         runValidators: true,
       })

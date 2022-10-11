@@ -17,8 +17,9 @@ router.post('/', ensureAuth, async (req, res) => {
     req.body.user = req.user.id
     console.log(req.body)
 
-    //Convert chronological data to single array of objects
+    //Convert chronological data to array of objects
     let chronologicalBody, categoricalBody;
+    
     if(req.body.chronicleType === 'chronological'){
       chronologicalBody = [];
       if(Array.isArray(req.body.chronologicalText)){
@@ -37,7 +38,7 @@ router.post('/', ensureAuth, async (req, res) => {
         })
       }
     }
-    //Convert categorical data to single array of objects
+    //Convert categorical data to array of objects
     else if(req.body.chronicleType === 'categorical'){
       categoricalBody = [];
       if(Array.isArray(req.body.categoricalText)){
@@ -121,6 +122,8 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
 // @route   PUT /chronicles/:id
 router.put('/:id', ensureAuth, async (req, res) => {
   try {
+    console.log(req.body)
+    
     let chronicle = await Chronicle.findById(req.params.id).lean()
 
     if (!chronicle) {
@@ -129,7 +132,56 @@ router.put('/:id', ensureAuth, async (req, res) => {
     if (chronicle.user != req.user.id) {
       res.redirect('/dashboard')
     } else {
-      chronicle = await Chronicle.findOneAndUpdate({ _id: req.params.id }, req.body, {
+
+      //Convert chronological data to array of objects
+      let chronologicalBody, categoricalBody;
+
+      if(req.body.chronologicalText){
+        chronologicalBody = [];
+        if(Array.isArray(req.body.chronologicalText)){
+            for(let i = 0; i < req.body.chronologicalText.length; i++){
+            chronologicalBody.push({
+              startDate: req.body.startDate[i],
+              endDate: req.body.endDate[i],
+              chronologicalText: req.body.chronologicalText[i]
+            })
+          }
+        }else {
+          chronologicalBody.push({
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
+            chronologicalText: req.body.chronologicalText
+          })
+        }
+      }
+
+      //Convert categorical data to array of objects
+      else if(req.body.categoricalText){
+        categoricalBody = [];
+        if(Array.isArray(req.body.categoricalText)){
+          for(let i = 0; i < req.body.categoricalText.length; i++){
+            categoricalBody.push({
+              topic: req.body[`topic${i}`],
+              categoricalText: req.body.categoricalText[i]
+            })
+          }
+        }else {
+          categoricalBody.push({
+            topic: req.body.topic0,
+            categoricalText: req.body.categoricalText
+          })
+        }
+      }
+
+      //Update chronicle in database, validating against model and returning updated document
+      chronicle = await Chronicle.findOneAndUpdate({ _id: req.params.id }, { 
+        $set: {
+          status: req.body.status,
+          title: req.body.title,
+          freestyleBody: req.body.freestyleText || null,
+          chronologicalBody: chronologicalBody || null,
+          categoricalBody: categoricalBody || null,
+        },
         new: true,
         runValidators: true,
       })
