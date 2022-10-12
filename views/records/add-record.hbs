@@ -9,13 +9,13 @@
                 <input type="file" name="record">
             </div>
             <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" placeholder="Choose a file to upload">
+                <input class="file-path validate" type="text" placeholder="Choose a file to upload" required>
             </div>
         </div>    
         <div class="row section">
             <div class="input-field">
-                <select name="recordType" id="recordType" class="select">
-                    <option value=""></option>
+                <select name="recordType" id="recordType" class="select" required>
+                    <option value="" disabled selected></option>
                     <option value="Doctor Visit">Doctor Visit</option>
                     <option value="Test Result">Test Result</option>
                     <option value="Prescription">Prescription</option>
@@ -26,7 +26,7 @@
         </div>
         <div class="row">
             <div class="input-field">
-                <input type="text" name="title" id="title" >
+                <input type="text" name="title" id="title" required>
                 <label for="title">Title</label>
             </div>
         </div>

@@ -5,8 +5,8 @@
 
         <div class="row">
             <div class="input-field">
-                <select name="chronicleType" id="chronicleType" class="select" onchange="displayForm(this.value)">
-                    <option value=""></option>
+                <select name="chronicleType" id="chronicleType" class="select" onchange="displayForm(this.value)" required>
+                    <option value="" disabled selected></option>
                     <option value="freestyle">Freestyle</option>
                     <option value="chronological">Chronologically</option>
                     <option value="categorical">Topic by topic</option>
@@ -17,8 +17,8 @@
 
         <div class="row">
             <div class="input-field">
-                <select name="status" id="status" class="select">
-                    <option value=""></option>
+                <select name="status" id="status" class="select" required>
+                    <option value="" disabled selected></option>
                     <option value="Private">Keep it private</option>
                     <option value="Public">Make it public</option>
                 </select>
@@ -28,7 +28,7 @@
         
         <div class="row">
             <div class="input-field">
-                <input type="text" name="title" id="title" >
+                <input type="text" name="title" id="title" required>
                 <label for="title">Title</label>
             </div>
         </div>
@@ -45,11 +45,11 @@
             <div class="input-field">
                 <div class="row">
                     <div class="col l6">
-                        <input type="text" name="startDate" id="startDate0" class="datepicker">
+                        <input type="text" name="startDate" id="startDate0" class="datepicker chronologicalInput" required>
                         <label for="#startDate0">Start Date</label>
                     </div>
                     <div class="col l6">
-                        <input type="text" name="endDate" id="endDate0" class="datepicker">
+                        <input type="text" name="endDate" id="endDate0" class="datepicker chronologicalInput" required>
                         <label for="#endDate0">End Date</label>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
             <h6>Tell your story topic by topic, organizing it into categories related to your illness:</h6>
             <div class="section">
                 <label class="radio">
-                    <input type="radio" name="topic0" value="Context" class="with-gap"/>
+                    <input type="radio" name="topic0" value="Context" class="with-gap categoricalInput" required/>
                     <span>Context</span>
                 </label>
                 <label class="radio">

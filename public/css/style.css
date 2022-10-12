@@ -55,6 +55,16 @@ p {
   min-width: 115px;
 }
 
+/*Fix for required drop-down and textarea validation*/
+select[required], textarea[required] {
+  display: block;
+  width: 0;
+  height: 0;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+}
+
 /*Fix for cut-off month in datepicker*/
 .datepicker-controls .select-month input {
   width: 5em;

@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="input-field">
-                <select name="status" id="status" class="select">
+                <select name="status" id="status" class="select" required>
                     {{#select chronicle.status}}
                     <option value="Private">Private</option>
                     <option value="Public">Public</option>
@@ -16,7 +16,7 @@
         
         <div class="row">
             <div class="input-field">
-                <input type="text" name="title" value="{{chronicle.title}}" id="title">
+                <input type="text" name="title" value="{{chronicle.title}}" id="title" required>
                 <label for="title">Title</label>
             </div>
         </div>
@@ -37,11 +37,11 @@
                     <div class="input-field">
                         <div class="row">
                             <div class="col l6">
-                                <input type="text" name="startDate" value="{{this.startDate}}" id="startDate{{@index}}" class="datepicker">
+                                <input type="text" name="startDate" value="{{this.startDate}}" id="startDate{{@index}}" class="datepicker chronologicalInput" required>
                                 <label for="#startDate{{@index}}">Start Date</label>
                             </div>
                             <div class="col l6">
-                                <input type="text" name="endDate" value="{{this.endDate}}" id="endDate{{@index}}" class="datepicker">
+                                <input type="text" name="endDate" value="{{this.endDate}}" id="endDate{{@index}}" class="datepicker chronologicalInput" required>
                                 <label for="#endDate{{@index}}">End Date</label>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                 {{#each chronicle.categoricalBody}}
                     <div class="section">
                         <label class="radio">
-                            <input type="radio" name="topic{{@index}}" value="Context" class="with-gap" {{checked this.topic "Context"}}/>
+                            <input type="radio" name="topic{{@index}}" value="Context" class="with-gap categoricalInput" required {{checked this.topic "Context"}}/>
                             <span>Context</span>
                         </label>
                         <label class="radio">

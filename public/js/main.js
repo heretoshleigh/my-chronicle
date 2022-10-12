@@ -1,25 +1,45 @@
-// Display form based on user-selected chronicle type
+//Show form and adjust required attributes based on user-selected chronicle type
+//Commenting out freestyle validator until we figure out ckeditor for required textareas
 function displayForm(value){
+
+    const freestyle = document.getElementById('freestyle');
+    // const freestyleInput = document.querySelector('.freestyleInput');
+
+    const chronological = document.getElementById('chronological');
+    const chronologicalInputs = document.querySelectorAll('.chronologicalInput');
+
+    const categorical = document.getElementById('categorical');
+    const categoricalInputs = document.querySelectorAll('.categoricalInput');
+
     switch(value){
+
         case 'freestyle':
-            document.getElementById('freestyle').removeAttribute('hidden');
-            document.getElementById('chronological').setAttribute('hidden','');    
-            document.getElementById('categorical').setAttribute('hidden','');
+            freestyle.removeAttribute('hidden');
+            // freestyleInput.setAttribute('required','');
+            chronological.setAttribute('hidden','');
+            chronologicalInputs.forEach(input => input.removeAttribute('required'));
+            categorical.setAttribute('hidden','');
+            categoricalInputs.forEach(input => input.removeAttribute('required'));
             break;
+
         case 'chronological':
-            document.getElementById('freestyle').setAttribute('hidden','');
-            document.getElementById('chronological').removeAttribute('hidden');    
-            document.getElementById('categorical').setAttribute('hidden','');
+            chronological.removeAttribute('hidden');   
+            chronologicalInputs.forEach(input => input.setAttribute('required',''));
+            freestyle.setAttribute('hidden','');
+            // freestyleInput.removeAttribute('required');
+            categorical.setAttribute('hidden','');
+            categoricalInputs.forEach(input => input.removeAttribute('required'));
             break;
+
         case 'categorical':
-            document.getElementById('freestyle').setAttribute('hidden','');
-            document.getElementById('chronological').setAttribute('hidden','');    
-            document.getElementById('categorical').removeAttribute('hidden');
+            categorical.removeAttribute('hidden');
+            categoricalInputs.forEach(input => input.setAttribute('required',''));
+            freestyle.setAttribute('hidden','');
+            // freestyleInput.removeAttribute('required');
+            chronological.setAttribute('hidden','');
+            chronologicalInputs.forEach(input => input.removeAttribute('required'));
             break;
-        default:
-            document.getElementById('freestyle').setAttribute('hidden','');
-            document.getElementById('chronological').setAttribute('hidden','');    
-            document.getElementById('categorical').setAttribute('hidden','');
+
     }
 }
 
@@ -40,11 +60,11 @@ function addPeriod(){
         `<div class="input-field">
             <div class="row">
                 <div class="col l6">
-                    <input type="text" name="startDate" id="startDate${newId}" class="datepicker">
+                    <input type="text" name="startDate" id="startDate${newId}" class="datepicker chronologicalInput" required>
                     <label for="#startDate${newId}">Start Date</label>
                 </div>
                 <div class="col l6">
-                    <input type="text" name="endDate" id="endDate${newId}" class="datepicker">
+                    <input type="text" name="endDate" id="endDate${newId}" class="datepicker chronologicalInput" required>
                     <label for="#endDate${newId}">End Date</label>
                 </div>
             </div>
@@ -94,7 +114,7 @@ function addTopic(){
     const newTopic = 
         `<div class="section">
             <label class="radio">
-                <input type="radio" name="topic${newId}" value="Context" class="with-gap"/>
+                <input type="radio" name="topic${newId}" value="Context" class="with-gap categoricalInput" required/>
                 <span>Context</span>
             </label>
             <label class="radio">
