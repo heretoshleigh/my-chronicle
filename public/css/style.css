@@ -83,6 +83,8 @@ p {
   display: block;
 }
 
+/*HACKY FIXES FOR MOBILE. REFACTOR INTO CLEAN BREAKPOINTS*/
+
 /*Fix header for mobile*/
 @media screen and (max-width: 600px) {
   nav .fas{
@@ -110,7 +112,27 @@ p {
   }
 }
 
-/*Fix table for mobile*/
+/*Fix dashboard table for mobile*/
 table.responsive-table th {
   display: none;
+}
+
+/*Fix add/remove period/topic buttons for mobile*/
+@media screen and (max-width: 390px){
+  #removePeriod {
+    margin-top: 5px;
+  }
+}
+
+@media screen and (max-width: 282px){
+  #removeTopic {
+    margin-top: 5px;
+  }
+}
+
+/*Fix radio buttons for mobile*/
+@media screen and (max-width: 678px){
+  .radio {
+    display: block;
+  }
 }
